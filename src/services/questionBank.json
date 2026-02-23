@@ -1,0 +1,102 @@
+{
+    "python": [
+        "You mentioned Python in your profile. How do you handle memory management and garbage collection in Python applications?",
+        "Can you explain the difference between decorators and generators in Python, and provide a scenario where you used them effectively?",
+        "In your Python work, how do you handle asynchronous programming when dealing with I/O-bound tasks?",
+        "What are some of your favorite Python libraries for data processing or web development, and why do you prefer them?"
+    ],
+    "javascript": [
+        "With your JavaScript background, how do you manage state in large-scale applications?",
+        "Can you explain the concept of 'closures' in JavaScript and how they contribute to your coding patterns?",
+        "How do you approach performance optimization when building complex front-end interfaces with JavaScript?",
+        "What is your experience with modern JavaScript features like Async/Await and ES Modules?"
+    ],
+    "react": [
+        "Since you've worked with React, how do you decide between using context API versus a state management library like Redux or Zustand?",
+        "Can you describe a time when you had to optimize a React component that was causing significant re-rendering issues?",
+        "How do you handle side effects in your React applications, especially when dealing with complex data fetching?",
+        "What is your approach to testing React components for both functionality and accessibility?"
+    ],
+    "leadership": [
+        "You have leadership listed as a core interest. Can you describe a time when you had to mentor a team member through a difficult technical transition?",
+        "How do you balance technical excellence with team velocity when leading a project?",
+        "Tell me about a time you had to make a difficult decision that was unpopular with the team but necessary for the project's success.",
+        "How do you foster an environment of continuous learning and growth within your engineering teams?"
+    ],
+    "management": [
+        "In your management experience, how do you handle performance reviews and constructive feedback for high-performing vs. underperforming engineers?",
+        "Can you walk me through your process for resource planning and project estimation for a multi-quarter roadmap?",
+        "How do you bridge the communication gap between technical teams and non-technical stakeholders?",
+        "Describe a conflict within your team and the specific steps you took to resolve it sustainably."
+    ],
+    "aws": [
+        "With your AWS expertise, how do you approach designing for high availability and disaster recovery?",
+        "Can you explain the trade-offs between different AWS compute services like Lambda, Fargate, and EC2 for a microservices architecture?",
+        "How do you manage security and compliance (IAM, VPC, Encryption) within your AWS infrastructure?",
+        "What strategies do you use for cost optimization and monitoring of cloud resources?"
+    ],
+    "docker": [
+        "How do you ensure that your Docker images are lean, secure, and production-ready?",
+        "Can you describe your experience with multi-stage builds and why they are beneficial?",
+        "In a microservices environment, how do you handle container orchestration and networking between containers?",
+        "What are some of the most common challenges you've faced when containerizing legacy applications?"
+    ],
+    "sql": [
+        "How do you approach query optimization and indexing for large-scale relational databases?",
+        "Can you explain the ACID properties and why they are critical for the systems you've built?",
+        "How do you handle database migrations in a CI/CD pipeline with zero downtime?",
+        "When would you choose a relational database over a NoSQL solution for a new project?"
+    ],
+    "security": [
+        "How do you integrate security best practices into the software development lifecycle (DevSecOps)?",
+        "Can you talk about your experience with implementing authentication and authorization (OAuth, JWT, etc.)?",
+        "How do you protect your applications against common vulnerabilities like SQL injection or Cross-Site Scripting (XSS)?",
+        "What is your process for conducting security audits or vulnerability scans on your codebases?"
+    ],
+    "testing": [
+        "What is your philosophy on the balance between unit, integration, and end-to-end tests?",
+        "Can you describe a time when a comprehensive testing suite saved a project from a major regression?",
+        "How do you approach testing for edge cases and asynchronous operations in your code?",
+        "What tools and frameworks do you prefer for automated testing, and what makes them effective for your workflow?"
+    ],
+    "agile": [
+        "How do you adapt the Scrum or Kanban framework to fit the specific needs of a diverse engineering team?",
+        "Describe your experience with sprint planning and how you handle scope creep mid-sprint.",
+        "What metrics do you use to measure team health and project progress in an Agile environment?",
+        "How do you facilitate a productive retrospective that leads to actual process improvements?"
+    ],
+    "communication": [
+        "Can you describe a situation where you had to explain a highly technical concept to a non-technical executive?",
+        "How do you ensure clear and efficient communication within a remote or distributed team?",
+        "Tell me about a time you had to negotiate a deadline or scope change with a client or manager.",
+        "How do you approach documentation to ensure it is useful and accessible to different audiences?"
+    ],
+    "behavioral": [
+        "Describe a situation where you had to meet a tight deadline. How did you manage your time and priorities?",
+        "Tell me about a conflict you had with a colleague and how you resolved it.",
+        "Give me an example of a time you showed leadership, even without a formal title.",
+        "Describe a project that failed. What did you learn from it?",
+        "Tell me about a time you had to adapt quickly to an unexpected change.",
+        "Describe a time when you went above and beyond what was expected of you.",
+        "How have you handled receiving critical feedback in the past?"
+    ],
+    "technical": [
+        "Walk me through how you approach debugging a complex issue in production.",
+        "How do you stay current with new technologies and industry trends?",
+        "Describe your experience with version control and collaborative development workflows.",
+        "Explain how you would design a scalable system for a high-traffic application.",
+        "How do you ensure the quality and maintainability of your code?",
+        "What is your approach to writing unit tests and why do you think they're important?"
+    ],
+    "situational": [
+        "Imagine you've been given a project with an unclear scope and limited resources. How would you proceed?",
+        "If a key stakeholder kept changing requirements mid-project, how would you handle that?",
+        "How would you handle a situation where your manager asked you to do something you disagreed with?",
+        "You discover a critical bug just before a major product launch. Walk me through your response."
+    ],
+    "closing": [
+        "What are your primary career goals for the next three to five years?",
+        "What does your ideal work environment look like, and why?",
+        "Is there anything about yourself you'd like to highlight that we haven't covered today?"
+    ]
+}

@@ -1,0 +1,59 @@
+
+> aicareer04@0.1.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+node.exe : [33m[vite:css] 
+@import must precede all 
+other statements (besides 
+@charset or empty @layer)
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE $NPM_CLI_JS 
+$args
++   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: ([33m[v  
+  ite:css]...r empty @laye   
+ r):String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+3  |  @tailwind utilities;
+4  |  
+5  |  @import url('https://fo
+nts.googleapis.com/css2?famil
+y=Inter:wght@300;400;500;600;
+700&display=swap');
+   |  ^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
+6  |  
+7  |  :root {[39m
+[32m???[39m 2744 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                          [39m[1m[2m    0.51 kB[22m[1m[22m[2m ??? gzip:   0.33 kB[22m
+[2mdist/[22m[32massets/pdf.worker.min-yatZIOMy.mjs  [39m[1m[2m1,375.84 kB[22m[1m[22m
+[2mdist/[22m[35massets/index-DneJ5L5G.css           [39m[1m[2m   22.50 kB[22m[1m[22m[2m ??? gzip:   4.93 kB[22m
+[2mdist/[22m[36massets/index-xaaQFLaB.js            [39m[1m[33m1,198.89 kB[39m[22m[2m ??? gzip: 348.11 kB[22m
+[33m
+(!) Some chunks are larger 
+than 500 kB after 
+minification. Consider:
+- Using dynamic import() to 
+code-split the application
+- Use build.rollupOptions.out
+put.manualChunks to improve 
+chunking: https://rollupjs.or
+g/configuration-options/#outp
+ut-manualchunks
+- Adjust chunk size limit 
+for this warning via build.ch
+unkSizeWarningLimit.[39m
+[32m??? built in 6.20s[39m
