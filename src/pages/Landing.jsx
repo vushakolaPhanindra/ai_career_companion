@@ -1,177 +1,160 @@
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import {
-    ArrowRight,
-    Mic,
-    Brain,
-    BarChart,
-    Sparkles,
-    ShieldCheck,
-    Play
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Brain, Github, Mail } from "lucide-react";
+
+const ROLES = [
+    "Software Engineer",
+    "AIML Engineer",
+    "Data Analyst",
+    "Full Stack Developer"
+];
 
 const Landing = () => {
     const navigate = useNavigate();
+    const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentRoleIndex((prev) => (prev + 1) % ROLES.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        <div className="min-h-screen bg-[#020617] text-white flex flex-col font-sans overflow-x-hidden selection:bg-blue-500/30">
+        <div className="min-h-screen bg-[#050b14] text-slate-200 font-sans overflow-x-hidden selection:bg-indigo-500/30 flex flex-col">
 
-            {/* NAVBAR */}
-            <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-6 py-4 transition-all duration-300">
-                <div className="flex justify-between items-center w-full max-w-7xl bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 shadow-2xl">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                            <Sparkles className="w-4 h-4 text-white" />
+            {/* Animated Background Image & Effects */}
+            <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"
+                style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=2560&q=80')"
+                }}
+            />
+            {/* Dark Overlay Layer */}
+            <div className="fixed inset-0 z-0 bg-gradient-to-br from-[#050b14]/90 via-[#0a1128]/80 to-[#010409]/90 backdrop-blur-sm" />
+
+            {/* Subtle Abstract Neural Particles */}
+            <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
+                <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+                <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600/5 rounded-full blur-[150px]" />
+            </div>
+
+            <div className="relative z-10 flex flex-col flex-1">
+
+                {/* NAVBAR */}
+                <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-6 py-4 transition-all duration-300">
+                    <div className="flex justify-between items-center w-full max-w-7xl bg-[#0a1128]/70 backdrop-blur-md border border-white/5 rounded-2xl px-6 py-3 shadow-lg">
+                        <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center">
+                                <Brain className="w-4 h-4 text-indigo-400" />
+                            </div>
+                            <h1 className="text-xl font-bold text-white tracking-tight">
+                                AI Career Companion
+                            </h1>
                         </div>
-                        <h1 className="text-xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
-                            AI Career Companion
+
+                        <div className="flex items-center gap-6">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => navigate("/login")}
+                                className="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-xl text-sm font-medium transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] flex items-center gap-2"
+                            >
+                                Sign In / Register
+                            </motion.button>
+                        </div>
+                    </div>
+                </nav>
+
+                {/* HERO SECTION */}
+                <main className="flex-1 flex flex-col items-center justify-center pt-32 pb-20 px-6 max-w-7xl mx-auto w-full text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="space-y-8 max-w-4xl"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/10 backdrop-blur-sm text-indigo-300 text-sm font-medium mb-4">
+                            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                            Next-Gen Interview AI
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1]">
+                            Ace Every Interview with <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">
+                                AI Career Companion
+                            </span>
                         </h1>
+
+                        <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                            AI-powered mock interviews with real-time feedback on technical skills and communication. Prepare for:
+                        </p>
+
+                        {/* Typing Effect */}
+                        <div className="h-12 flex justify-center items-center">
+                            <AnimatePresence mode="popLayout">
+                                <motion.div
+                                    key={currentRoleIndex}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="text-2xl md:text-3xl font-semibold text-emerald-400"
+                                >
+                                    {ROLES[currentRoleIndex]}
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => navigate("/login")}
+                                className="bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-3.5 rounded-xl font-semibold text-white flex items-center gap-2 shadow-[0_0_20px_rgba(79,70,229,0.4)] hover:shadow-[0_0_30px_rgba(79,70,229,0.6)] transition-all"
+                            >
+                                Start Free Interview
+                                <ArrowRight className="w-4 h-4" />
+                            </motion.button>
+                        </div>
+                    </motion.div>
+                </main>
+
+                {/* FOOTER */}
+                <footer className="py-8 border-t border-white/10 bg-[#0a1128]/50 backdrop-blur-md mt-auto">
+                    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center">
+                                <Brain className="w-4 h-4 text-indigo-400" />
+                            </div>
+                            <span className="font-bold text-white tracking-tight">AI Career Companion</span>
+                        </div>
+                        <div className="flex items-center gap-6 text-sm text-slate-400 font-medium">
+                            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                            <a href="#" className="hover:text-white transition-colors">Terms</a>
+                            <a href="#" className="hover:text-white transition-colors">Contact</a>
+                        </div>
+                        <div className="flex gap-4 text-slate-400">
+                            <a href="#" className="hover:text-indigo-400 transition-colors bg-white/5 p-2 rounded-lg border border-white/5 hover:border-indigo-500/30">
+                                <Github className="w-4 h-4" />
+                            </a>
+                            <a href="#" className="hover:text-indigo-400 transition-colors bg-white/5 p-2 rounded-lg border border-white/5 hover:border-indigo-500/30">
+                                <Mail className="w-4 h-4" />
+                            </a>
+                        </div>
                     </div>
-
-                    <div className="flex items-center gap-4">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => navigate("/login")}
-                            className="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-6 py-2.5 rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] text-sm flex items-center gap-2 backdrop-blur-sm"
-                        >
-                            Login / Sign Up
-                            <ArrowRight className="w-4 h-4" />
-                        </motion.button>
+                    <div className="max-w-7xl mx-auto px-6 mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                        <p>Built for the future of career preparation.</p>
+                        <p>AI Career Companion © {new Date().getFullYear()}</p>
                     </div>
-                </div>
-            </nav>
-
-            {/* HERO */}
-            <main className="flex-1 flex flex-col items-center justify-center text-center px-6 relative pt-32 pb-20">
-
-                {/* Animated Background Orbs */}
-                <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-                    <motion.div
-                        animate={{
-                            transform: ['translate(0%, 0%) scale(1)', 'translate(5%, 5%) scale(1.1)', 'translate(-5%, -5%) scale(0.9)', 'translate(0%, 0%) scale(1)'],
-                        }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[120px] mix-blend-screen"
-                    />
-                    <motion.div
-                        animate={{
-                            transform: ['translate(0%, 0%) scale(1)', 'translate(-5%, 10%) scale(1.2)', 'translate(5%, -10%) scale(0.8)', 'translate(0%, 0%) scale(1)'],
-                        }}
-                        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                        className="absolute bottom-[20%] right-[15%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] mix-blend-screen"
-                    />
-                </div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="max-w-5xl space-y-10 mt-10"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4 shadow-xl">
-                        <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span className="text-sm font-medium text-white/80">AI Interview Generation Engine Live</span>
-                    </div>
-
-                    <h2 className="text-6xl md:text-8xl font-black leading-[1.1] tracking-tight text-white mb-6">
-                        Ace Every Interview with
-                        <br />
-                        <span className="bg-gradient-to-r from-blue-400 via-emerald-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-2xl">
-                            AI Career Companion
-                        </span>
-                    </h2>
-
-                    <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-light">
-                        Experience hyper-realistic AI-powered mock interviews. Get instant,
-                        actionable feedback on your technical skills, and communication style.
-                    </p>
-
-                    <div className="flex justify-center gap-6 mt-12 flex-wrap items-center">
-                        <motion.button
-                            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.2)" }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => navigate("/login")}
-                            className="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-8 py-4 rounded-2xl text-lg font-bold flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all backdrop-blur-sm"
-                        >
-                            Start Free Interview
-                            <ArrowRight className="w-5 h-5" />
-                        </motion.button>
-                    </div>
-                </motion.div>
-
-                {/* FEATURE GRID */}
-                <motion.div
-                    initial={{ opacity: 0, y: 60 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-32 max-w-7xl w-full px-6"
-                >
-                    <FeatureCard
-                        icon={<Brain className="w-8 h-8 text-blue-400" />}
-                        title="Adaptive AI Engine"
-                        desc="Dynamic questions generated contextually based on your resume, experience level, and the precise target job role."
-                        delay={0.4}
-                    />
-                    <FeatureCard
-                        icon={<Mic className="w-8 h-8 text-emerald-400" />}
-                        title="Real Voice Interaction"
-                        desc="Engage in a natural, flowing voice conversation with our low-latency AI interviewer possessing emotional intelligence."
-                        delay={0.5}
-                    />
-                    <FeatureCard
-                        icon={<BarChart className="w-8 h-8 text-indigo-400" />}
-                        title="Intelligent Analytics"
-                        desc="Receive deeply structured feedback, scoring rubrics, and highly actionable insights to perfect your interview delivery."
-                        delay={0.6}
-                    />
-                </motion.div>
-
-                {/* TRUST SECTION */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                    className="mt-24 pt-10 border-t border-white/5 w-full max-w-4xl text-center text-slate-400 text-sm mb-16"
-                >
-                    <div className="flex items-center justify-center gap-8 flex-wrap">
-                        <span className="flex items-center gap-2 font-medium">
-                            <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                            Secure & Private
-                        </span>
-                        <span className="flex items-center gap-2 font-medium">
-                            <Sparkles className="w-5 h-5 text-blue-400" />
-                            AI-Powered Personalization
-                        </span>
-                    </div>
-                </motion.div>
-            </main>
-
-            {/* FOOTER */}
-            <footer className="py-8 text-center text-slate-500 text-sm mt-auto z-10 border-t border-white/5 bg-white/5">
-                © {new Date().getFullYear()} AI Career Companion • Your Personal AI Interview Coach
-            </footer>
+                </footer>
+            </div>
         </div>
     );
 };
-
-function FeatureCard({ icon, title, desc, delay }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: delay, duration: 0.6 }}
-            whileHover={{ y: -8, scale: 1.02 }}
-            className="bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-3xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)] hover:border-white/10 hover:bg-white/[0.04] transition-all relative overflow-hidden group text-left flex flex-col items-start"
-        >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="mb-6 bg-white/5 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:bg-white/10 transition-all duration-300">
-                {icon}
-            </div>
-            <h3 className="text-2xl font-semibold mb-4 tracking-tight text-white">{title}</h3>
-            <p className="text-slate-400 text-base leading-relaxed">{desc}</p>
-        </motion.div>
-    );
-}
 
 export default Landing;

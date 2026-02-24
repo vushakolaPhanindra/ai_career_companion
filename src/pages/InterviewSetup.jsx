@@ -84,67 +84,89 @@ export default function InterviewSetup() {
 
     const isReady = setupMode === "resume" ? (resumeText && !loading) : (jobTitle.trim() && jobDescription.trim() && !loading);
 
+    const containerVariants = {
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100,
+                when: "beforeChildren",
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120 } }
+    };
+
     return (
         <div className="min-h-screen bg-[#050b18] text-slate-200 font-sans selection:bg-blue-500/30 overflow-x-hidden pt-12 pb-24 px-6">
 
-            {/* Background Aesthetic */}
+            {/* Animated Background Image & Effects */}
+            <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-luminosity"
+                style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2560&q=80')"
+                }}
+            />
+            {/* Dark Overlay Layer */}
+            <div className="fixed inset-0 z-0 bg-gradient-to-br from-[#050b14]/90 via-[#0a1128]/80 to-[#010409]/90 backdrop-blur-sm" />
+
+            {/* Subtle Abstract Neural Particles */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
                 <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
                 <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
             </div>
 
-            <main className="relative z-10 max-w-5xl mx-auto">
+            <main className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[85vh]">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="w-full flex flex-col items-center"
+                >
+                    {/* Header Section */}
+                    <motion.div variants={itemVariants} className="text-center mb-16 space-y-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wide shadow-[0_0_20px_rgba(99,102,241,0.2)]">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            Next-Generation AI Evaluation
+                        </div>
 
-                {/* Header Section */}
-                <div className="text-center mb-16 space-y-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide"
-                    >
-                        <Sparkles className="w-3.5 h-3.5" />
-                        AI-Powered Interview Coach
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight text-white leading-tight">
+                            Configure your <br />
+                            <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">Interview Simulation.</span>
+                        </h1>
+
+                        <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
+                            Upload your resume or enter the job details to generate a personalized AI interview simulation tailored to your profile.
+                        </p>
                     </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"
-                    >
-                        Prepare for your <span className="text-blue-500">Dream Career.</span>
-                    </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-slate-400 text-lg max-w-2xl mx-auto"
-                    >
-                        Upload your resume or enter the job details to generate a personalized AI interview simulation tailored to your profile.
-                    </motion.p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-                    {/* Left Panel: Configuration */}
-                    <div className="lg:col-span-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-3xl overflow-hidden shadow-2xl p-8 md:p-10"
-                        >
+                    <motion.div variants={itemVariants} className="w-full max-w-3xl">
+                        {/* Centered Configuration Panel */}
+                        <div className="bg-[#0a0f1c]/80 backdrop-blur-2xl border border-white/[0.08] rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-8 md:p-12 relative">
+                            {/* Premium Accent Line */}
+                            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500" />
                             {/* Mode Toggle */}
-                            <div className="flex p-1 bg-slate-950/50 rounded-2xl border border-white/5 mb-10 w-fit">
+                            <div className="flex p-1.5 bg-black/40 rounded-2xl border border-white/[0.05] mb-10 w-fit mx-auto md:mx-0">
                                 <button
                                     onClick={() => { setSetupMode("resume"); setError(""); }}
-                                    className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${setupMode === "resume" ? "bg-blue-600 text-white shadow-lg" : "text-white/60 hover:text-white"}`}
+                                    className={`px-8 py-3 rounded-xl text-sm font-black tracking-wide transition-all duration-300 flex items-center gap-2 ${setupMode === "resume" ? "bg-indigo-600 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)]" : "text-white/60 hover:text-white hover:bg-white/[0.05]"}`}
                                 >
                                     <FileText className="w-4 h-4" />
                                     Resume Mode
                                 </button>
                                 <button
                                     onClick={() => { setSetupMode("manual"); setError(""); }}
-                                    className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${setupMode === "manual" ? "bg-blue-600 text-white shadow-lg" : "text-white/60 hover:text-white"}`}
+                                    className={`px-8 py-3 rounded-xl text-sm font-black tracking-wide transition-all duration-300 flex items-center gap-2 ${setupMode === "manual" ? "bg-cyan-600 text-white shadow-[0_0_20px_rgba(8,145,178,0.3)]" : "text-white/60 hover:text-white hover:bg-white/[0.05]"}`}
                                 >
                                     <Briefcase className="w-4 h-4" />
                                     Manual Entry
@@ -166,10 +188,11 @@ export default function InterviewSetup() {
                                                 <input
                                                     type="file"
                                                     accept="application/pdf"
-                                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 text-transparent file:hidden"
                                                     onChange={(e) => handleFileChange(e.target.files[0])}
+                                                    title=""
                                                 />
-                                                <div className={`border-2 border-dashed rounded-3xl p-12 flex flex-col items-center text-center transition-all duration-300 ${resumeFile ? "bg-blue-600/5 border-blue-500/30" : "bg-slate-950/30 border-white/10 group-hover:border-blue-500/50"}`}>
+                                                <div className={`border-2 border-dashed rounded-[2rem] p-12 flex flex-col items-center text-center transition-all duration-300 ${resumeFile ? "bg-indigo-500/5 border-indigo-500/30" : "bg-black/20 border-white/10 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/[0.02]"}`}>
                                                     {loading ? (
                                                         <div className="space-y-4">
                                                             <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto" />
@@ -214,12 +237,12 @@ export default function InterviewSetup() {
                                                         </div>
                                                     ) : (
                                                         <div className="space-y-6">
-                                                            <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center border border-blue-500/20 mx-auto group-hover:scale-110 transition-transform">
-                                                                <Upload className="w-8 h-8 text-blue-500" />
+                                                            <div className="w-20 h-20 bg-indigo-500/10 rounded-[2rem] flex items-center justify-center border border-indigo-500/20 mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-[0_0_30px_rgba(99,102,241,0)] group-hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]">
+                                                                <Upload className="w-10 h-10 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
                                                             </div>
-                                                            <div className="space-y-2">
-                                                                <h3 className="text-xl font-bold text-white">Upload your Resume</h3>
-                                                                <p className="text-slate-500 text-sm max-w-sm mx-auto">Drop your CV here or click to browse. We only support PDF format for best analysis.</p>
+                                                            <div className="space-y-3">
+                                                                <h3 className="text-2xl font-black text-white tracking-tight">Upload your Resume</h3>
+                                                                <p className="text-slate-400 text-sm max-w-sm mx-auto font-medium">Drop your CV here or click to browse. We only support PDF format for best analysis.</p>
                                                             </div>
                                                         </div>
                                                     )}
@@ -234,25 +257,25 @@ export default function InterviewSetup() {
                                             exit={{ opacity: 0, x: -10 }}
                                             className="space-y-6"
                                         >
-                                            <div className="space-y-4">
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Target Job Title</label>
+                                            <div className="space-y-6">
+                                                <div className="space-y-2 group">
+                                                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1 group-focus-within:text-indigo-400 transition-colors">Target Job Title</label>
                                                     <input
                                                         type="text"
                                                         placeholder="e.g. Senior Software Engineer"
                                                         value={jobTitle}
                                                         onChange={(e) => setJobTitle(e.target.value)}
-                                                        className="w-full bg-slate-950/60 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500/50 focus:outline-none focus:bg-slate-950 transition-all text-white font-medium"
+                                                        className="w-full bg-black/20 border border-white/[0.05] rounded-2xl px-6 py-4 focus:border-indigo-500/50 hover:border-white/[0.1] focus:bg-white/[0.02] outline-none transition-all text-white placeholder:text-slate-600 font-medium shadow-[0_0_0_transparent] focus:shadow-[0_0_20px_rgba(79,70,229,0.15)]"
                                                     />
                                                 </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Job Description or Skills</label>
+                                                <div className="space-y-2 group">
+                                                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1 group-focus-within:text-indigo-400 transition-colors">Job Description or Skills</label>
                                                     <textarea
                                                         rows={6}
                                                         placeholder="Paste the job requirements or the key skills you want to be interviewed on..."
                                                         value={jobDescription}
                                                         onChange={(e) => setJobDescription(e.target.value)}
-                                                        className="w-full bg-slate-950/60 border border-white/10 rounded-3xl px-6 py-6 focus:border-blue-500/50 focus:outline-none focus:bg-slate-950 transition-all text-white resize-none"
+                                                        className="w-full bg-black/20 border border-white/[0.05] rounded-[2rem] px-6 py-6 focus:border-indigo-500/50 hover:border-white/[0.1] focus:bg-white/[0.02] outline-none transition-all text-white placeholder:text-slate-600 font-medium shadow-[0_0_0_transparent] focus:shadow-[0_0_20px_rgba(79,70,229,0.15)] resize-none custom-scrollbar"
                                                     />
                                                 </div>
                                             </div>
@@ -279,90 +302,32 @@ export default function InterviewSetup() {
                             </AnimatePresence>
 
                             {/* Start Button */}
-                            <div className="mt-12">
-                                <button
+                            <motion.div variants={itemVariants} className="mt-12">
+                                <motion.button
+                                    whileHover={isReady ? { scale: 1.01, boxShadow: "0 0 35px rgba(79,70,229,0.5)" } : {}}
+                                    whileTap={isReady ? { scale: 0.98 } : {}}
                                     disabled={!isReady || loading}
                                     onClick={handleStartInterview}
-                                    className={`w-full py-5 rounded-2xl text-sm font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 
-                                        ${isReady
-                                            ? "bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(37,99,235,0.3)]"
-                                            : "bg-slate-800 text-white/50 border border-white/5 cursor-not-allowed"}`}
+                                    className={`w-full py-5 rounded-2xl text-[15px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 relative overflow-hidden group
+                                            ${isReady
+                                            ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.3)] border border-white/10"
+                                            : "bg-black/40 text-white/30 border border-white/5 cursor-not-allowed"}`}
                                 >
-                                    {loading ? "System Processing..." : "Start Interview Simulation"}
-                                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isReady ? "translate-x-1" : "opacity-0"}`} />
-                                </button>
-                                <p className="mt-4 text-center text-slate-500 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2">
-                                    <ShieldCheck className="w-3.5 h-3.5 text-blue-500" />
+                                    {isReady && <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />}
+                                    <span className="relative z-10 flex items-center gap-3">
+                                        {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
+                                        {loading ? "System Processing..." : "Initialize Interview Environment"}
+                                        {!loading && <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${isReady ? "translate-x-1" : "opacity-0"}`} />}
+                                    </span>
+                                </motion.button>
+                                <p className="mt-5 text-center text-slate-500 text-[11px] font-black uppercase tracking-widest flex items-center justify-center gap-2">
+                                    <ShieldCheck className="w-4 h-4 text-indigo-500" />
                                     Candidate Data is encrypted and private
                                 </p>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* Right Panel: Supplementary Info */}
-                    <aside className="lg:col-span-4 space-y-6">
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-3xl p-8 space-y-8"
-                        >
-                            <div className="space-y-2">
-                                <h3 className="text-white font-bold flex items-center gap-2">
-                                    <Info className="w-4 h-4 text-blue-400" />
-                                    Preparation Tips
-                                </h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">
-                                    Our AI uses advanced NLP to analyze your profile and the job role to simulate a realistic interview experience.
-                                </p>
-                            </div>
-
-                            <ul className="space-y-6">
-                                {[
-                                    { title: "Personalized Questions", desc: "Questions are generated based on your resume's unique skill set.", icon: Target },
-                                    { title: "Real-time Feedback", desc: "Get a detailed score and suggestions for improvement immediately.", icon: Mic2 },
-                                    { title: "Simulation Environment", desc: "Realistic one-on-one session to build your confidence.", icon: ShieldCheck }
-                                ].map((tip, idx) => (
-                                    <li key={idx} className="flex gap-4 group">
-                                        <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/10 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                                            <tip.icon className="w-5 h-5 text-blue-400 group-hover:text-white transition-colors" />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <h4 className="text-white text-sm font-bold tracking-tight">{tip.title}</h4>
-                                            <p className="text-slate-500 text-xs leading-relaxed">{tip.desc}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <div className="pt-6 border-t border-white/5">
-                                <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 italic text-[11px] text-slate-400 leading-relaxed font-medium">
-                                    "Practice makes permanent. Use this session to refine your story and eliminate filler words before the real interview."
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Quick Stats */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-slate-900/20 border border-white/5 rounded-[2rem] p-6 flex items-center justify-between"
-                        >
-                            <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest tracking-tighter">AI Core Ready</span>
-                            </div>
-                            <span className="text-[10px] font-bold text-white/20">v4.0.2</span>
-                        </motion.div>
-                    </aside>
-                </div>
-
-                {/* Footer Copyright/Info */}
-                <div className="mt-20 text-center space-y-2 opacity-30">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.4em]">Integrated Career Companion Protocol</p>
-                    <p className="text-[9px] font-medium">&copy; 2026 AI Career. All rights reserved.</p>
-                </div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                </motion.div>
             </main>
         </div>
     );

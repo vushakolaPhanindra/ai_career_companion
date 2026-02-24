@@ -307,6 +307,16 @@ export default function Report() {
         <div className="min-h-screen bg-[#020617] text-slate-300 font-sans selection:bg-indigo-500/30 overflow-x-hidden pb-32">
 
             {/* --- IMMERSIVE BACKGROUND EFFECTS --- */}
+            <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-luminosity pointer-events-none"
+                style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2560&q=80')"
+                }}
+            />
+            <div className="fixed inset-0 z-0 bg-gradient-to-br from-[#020617]/90 via-[#0a0f1c]/80 to-[#020617]/90 backdrop-blur-sm pointer-events-none" />
+
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
                 {/* Glassmorphism gradient orbs */}
                 <motion.div
@@ -319,7 +329,6 @@ export default function Report() {
                     transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
                     className="absolute w-[70vw] h-[70vw] max-w-[900px] max-h-[900px] bg-cyan-600/10 rounded-full blur-[100px] mix-blend-screen translate-x-[20%] translate-y-[20%]"
                 />
-                <div className="absolute inset-0 bg-[#020617]/40 backdrop-blur-[50px]" />
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
