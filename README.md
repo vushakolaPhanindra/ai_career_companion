@@ -30,7 +30,6 @@ The platform provides an interactive environment similar to real company intervi
 -  Responsive Design
 
 ---
-
 ## 🛠️ Tech Stack
 
 **Frontend**
