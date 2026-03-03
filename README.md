@@ -21,13 +21,13 @@ The platform provides an interactive environment similar to real company intervi
 
 ## ✨ Features
 
-- 🎤 AI-based Mock Interviews
-- 💬 Technical & Behavioral Question Simulation
-- ⚡ Real-time Interaction Experience
-- 🧠 Intelligent Response Analysis
-- 👨‍💻 Modern Professional UI
-- 🚀 Fast Performance with Vite
-- 📱 Responsive Design
+-  AI-based Mock Interviews
+-  Technical & Behavioral Question Simulation
+-  Real-time Interaction Experience
+-  Intelligent Response Analysis
+-  Modern Professional UI
+-  Fast Performance with Vite
+-  Responsive Design
 
 ---
 
