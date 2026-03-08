@@ -137,7 +137,7 @@ export default function InterviewSetup() {
                     <motion.div variants={itemVariants} className="text-center mb-16 space-y-6">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wide shadow-[0_0_20px_rgba(99,102,241,0.2)]">
                             <Sparkles className="w-3.5 h-3.5" />
-                            Next-Generation AI Evaluation
+                            AI Career Companion
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight text-white leading-tight">
