@@ -14,7 +14,10 @@ AI Career Companion acts as a smart virtual interviewer that helps users:
 - Experience real interview simulations
 - Receive AI-driven feedback
 - Build confidence before actual interviews
-
+AI & Backend Logic
+AI-based interview question generation
+Response evaluation system
+Feedback generation mechanism
 The platform provides an interactive environment similar to real company interview processes.
 
 ---
